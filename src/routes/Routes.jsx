@@ -20,14 +20,17 @@ const routes = [
         element: <Profile />,
       },
     ],
+    needsAuth: true,
   },
   {
     path: "/register",
     element: <Register />,
+    needsAuth: false,
   },
   {
     path: "/login",
     element: <Login />,
+    needsAuth: false,
   },
 ];
 
