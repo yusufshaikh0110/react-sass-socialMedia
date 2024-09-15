@@ -3,11 +3,11 @@ import Loader from "../components/Loader";
 import { useState } from "react";
 
 const ProtectedRoute = ({ children }) => {
-  const [isLoggedIn, setisLoggedIn] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState();
 
   setTimeout(() => {
-    setisLoggedIn(false);
-  }, 2000);
+    setIsLoggedIn(true);
+  }, 500);
 
   if (isLoggedIn === undefined) return <Loader />;
 
