@@ -2,15 +2,19 @@ import { Outlet } from "react-router-dom";
 import LeftBar from "./leftBar/LeftBar";
 import Navbar from "./navbar/Navbar";
 import RightBar from "./rightBar/RightBar";
+import useDarkMode from "../../context/darkModeContext";
 
 const Layout = () => {
+  const { darkMode } = useDarkMode();
   return (
     <>
-      <div className="layout-container">
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar />
-        <div className="layout-items">
+        <div style={{ display: "flex" }}>
           <LeftBar />
-          <Outlet />
+          <div style={{ flex: 6 }}>
+            <Outlet />
+          </div>
           <RightBar />
         </div>
       </div>

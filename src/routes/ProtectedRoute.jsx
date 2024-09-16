@@ -1,18 +1,15 @@
 import { Navigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import { useState } from "react";
+import useAuth from "../context/authContext";
 
 const ProtectedRoute = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState();
+  const { currentUser } = useAuth();
 
-  setTimeout(() => {
-    setIsLoggedIn(true);
-  }, 500);
+  if (currentUser === undefined) return <Loader />;
 
-  if (isLoggedIn === undefined) return <Loader />;
-
-  if (!isLoggedIn) {
-    return <Navigate to={"/login"} />;
+  if (!currentUser) {
+    return <Navigate to={"/login"} replace={true} />;
   }
 
   return children;
