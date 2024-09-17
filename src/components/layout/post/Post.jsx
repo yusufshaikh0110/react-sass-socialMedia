@@ -10,9 +10,7 @@ import { useState } from "react";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
-
-  //TEMPORARY
-  const liked = false;
+  const [liked, setLiked] = useState(false);
 
   return (
     <>
@@ -40,9 +38,12 @@ const Post = ({ post }) => {
           <div className="info">
             <div className="item">
               {liked ? (
-                <FavoriteOutlinedIcon />
+                <FavoriteOutlinedIcon
+                  onClick={() => setLiked(!liked)}
+                  style={{ color: "red" }}
+                />
               ) : (
-                <FavoriteBorderOutlinedIcon />
+                <FavoriteBorderOutlinedIcon onClick={() => setLiked(!liked)} />
               )}
               12 likes
             </div>
